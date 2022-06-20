@@ -1,22 +1,14 @@
 import express from "express";
-import homeController from "../controller/homeController"
+import apiController1 from "../controller/APIController"
 
 let router = express.Router();
 
-const initWebRoute = (app) =>{
+const initAPIRoute = (app) =>{
 
-    router.get('/index',homeController.getHomepage)
-    router.get('/detail/user/:userId',homeController.getDetailPage)
-    router.get('/create-user',homeController.createUser)
-    router.post('/delete-user',homeController.deleteUser)
-    router.get('/update-user/:id',homeController.editUser)
-    router.post('/update',homeController.updateUser)
-    router.post('/create',homeController.themUser)
-    router.get('/hello', (req, res) => {
-        res.send("Hello")
-      })
+    router.get('/users',apiController1.apiController);
+    router.post('/create-user',apiController1.CreateNewUser)
 
-      return app.use('/',router)
+      return app.use('/api/v1/',router)
 }
 
-module.exports = initWebRoute
+export default initAPIRoute

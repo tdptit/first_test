@@ -4,7 +4,7 @@ import path from "path"
 require('dotenv').config()
 import initWebRoute from "./route/web"
 //import connectiondb from "./configs/connectDB"
-
+import initAPIRoute from "./route/api"
 
 
 const app = express()
@@ -16,6 +16,8 @@ app.use(express.json());
 console.log('Start >> ' + port)
 configViewEngine(app);
 initWebRoute(app);
+
+initAPIRoute(app);
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
 }
